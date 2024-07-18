@@ -16,7 +16,7 @@ function setup() {
     cat4(200,350)
     // cat2();
   }
-  
+  // This is some kitty cat
   // Cloud background 
   
   function generateClouds() {
