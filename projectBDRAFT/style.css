@@ -1,0 +1,30 @@
+body{
+    background-color:maroon;
+}
+
+h1{
+    color:black;
+}
+
+#main{
+    background-color: blue;
+    width: 900px;
+    /* Auto center things in the middle. Pretty neat */
+    margin:auto;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    padding-left: 100px;
+    padding-right: 100px;
+    margin:auto;
+}
+
+#canvasParent{
+    background-color: blueviolet;
+    text-align: center;
+}
+

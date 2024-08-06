@@ -1,12 +1,12 @@
 let birds = [];
-let numBirds = 1;
+let numBirds = 3;
 
 function setup() {
     let cnv = createCanvas(400, 400);
     cnv.parent("canvas-parent");
 
     for (let i = 0; i < numBirds; i++) {
-        birds.push(new Bird(random(100, 400), random(100, 400)));
+        birds.push(new Bird(random(0, 400), random(0, 400)));
     }
 }
 
@@ -86,11 +86,11 @@ class Bird {
         let stepX = (this.des1X - this.x) / stepLength;
         let stepY = (this.des1Y - this.y) / stepLength;
 
-        if (Math.abs(this.des1X - this.x) > 30) {
+        if (Math.abs(this.des1X - this.x) > random(0,30)) {
             this.x += stepX;
         }
 
-        if (Math.abs(this.des1Y - this.y) > 30) {
+        if (Math.abs(this.des1Y - this.y) > random(0,30)) {
             this.y += stepY;
         }
         text('You will find something interesting there, you know...', 20, 20);
@@ -113,11 +113,11 @@ class Bird {
         let stepX = (this.des2X - this.x) / stepLength;
         let stepY = (this.des2Y - this.y) / stepLength;
 
-        if (Math.abs(this.des2X - this.x) > 30) {
+        if (Math.abs(this.des2X - this.x) > random(0,30)) {
             this.x += stepX;
         }
 
-        if (Math.abs(this.des2Y - this.y) > 30) {
+        if (Math.abs(this.des2Y - this.y) > random(0,30)) {
             this.y += stepY;
         }
     }

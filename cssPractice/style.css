@@ -1,0 +1,71 @@
+body {
+    background-color: maroon;
+}
+
+h1 {
+    color: black;
+}
+
+p {
+    color: blue;
+    background-color: beige;
+}
+
+.specialLine {
+    text-decoration: underline;
+
+}
+
+#singleout {
+    font-weight: bolder;
+    background-color: azure;
+}
+
+.boxOfText {
+    background-color: chartreuse;
+    border-style: dashed;
+    border-color: black;
+    border-width: 3px;
+    margin: 20px;
+    padding: 20px;
+    padding-left: 50px;
+    margin-right: 100px;
+    max-width: 300px;
+}
+
+.one {
+    /* absolute makes the element "important"  */
+    /* THIS ELEMENT WILL BE ON TOP OF EVERYTHING ELSE
+    AND THE OTHER ELEMENTS DOESNT INTERACT WITH IT */
+
+    position: absolute;
+    left: 500px;
+    top: 30px;
+
+}
+
+.two{
+    /* Keep the position the same when we scroll or resize the window */
+    position:fixed;
+    right: 0px;
+    bottom: 10px;
+}
+
+.three{
+    /* position:relative; */
+    left:50px;
+}
+
+.four{
+    display:none;
+}
+#singleout{
+    /* position relative changes position of things relative to where they are supposed to be */
+    position:relative;
+    right: 10px;
+}
+
+#canvasParent {
+    /* push the elements below the canvas a little further from the canvas */
+    margin-bottom: 100px;
+}
