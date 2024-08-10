@@ -1,0 +1,35 @@
+body{
+    background-color:whitesmoke;
+}
+
+h1{
+    color:black;
+}
+
+#main{
+    background-color:whitesmoke;
+    width:max-content;
+    /* Auto center things in the middle. Pretty neat */
+    margin:auto;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin:auto;
+}
+
+#canvasParent{
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}

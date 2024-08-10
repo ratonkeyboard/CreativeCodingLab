@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Canvas</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- include p5 library -->
+    <script src="lib/p5.js"></script>
+    <script src="lib/p5.sound.min.js"></script>
+</head>
+<body>
+    <div id="main">
+        <h1>My Bedroom</h1>
+        <div id="canvasParent"></div>
+        <div class="button-container">
+            <button id="upButton">Up</button>
+            <button id="downButton">Down</button>
+            <button id="leftButton">Left</button>
+            <button id="rightButton">Right</button>
+        </div>
+
+        <p>You can see other parts of the room with the links below: </p>
+
+        <p>This is a <a href="..">link to home page</a> here</p>
+        <p>This is a <a href="bedroomFront/index.html">link to desk and shelf</a> here</p>
+        <p>This is a <a href="bedroomWindow/index.html">link to window </a> here</p>
+
+        <!-- New content -->
+        <div id="project-description">
+            <p>  </p>
+
+            <p>This project is a digital representation of my memory palace, specifically focusing on my bedroom. It allows you to navigate through the room, exploring different sections and their associated memories.</p>
+            <p>1. To move around in the room, use your arrow keys or the buttons on screen</p>
+            <p>2. You can replace the furnitures around the room by dragging them</p>
+            <p>3. Click on the furniture to reveal their description</p>
+            <div class="image-placeholder"></div>
+            <div class="image-placeholder"></div>
+        </div>
+    </div>
+    <script src="sketch.js"></script>
+</body>
+</html>

@@ -1,30 +1,42 @@
-body{
-    background-color:maroon;
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-h1{
-    color:black;
-}
-
-#main{
-    background-color: blue;
-    width: 900px;
-    /* Auto center things in the middle. Pretty neat */
-    margin:auto;
-}
-
-h1{
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: url('assets/IMG_6242.jpg') no-repeat center center/cover;
+    color: #fff;
     text-align: center;
 }
 
-p{
-    padding-left: 100px;
-    padding-right: 100px;
-    margin:auto;
+.title {
+    font-size: 4em;
+    margin: 0.2em 0;
 }
 
-#canvasParent{
-    background-color: blueviolet;
-    text-align: center;
+.links {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin-top: 2em;
 }
 
+.links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.links a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

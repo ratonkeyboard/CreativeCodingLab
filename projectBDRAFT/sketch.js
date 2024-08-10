@@ -4,12 +4,74 @@ let offsetY = 0;
 const moveAmount = 5; // Amount to move the canvas with each step
 let moveInterval;
 
-// Define objects
+let cow1; // global cow instance
+let cowIMG;  // Global var to load cow image
+let chickenIMG;
+
+let animals = [];  // Q: So what get stored in this array? What is AN INSTANCE of cow/chicken/whatever like?
+let numAnimals = 4;
+
+function preload() { // function to load the assets, defind before setup function
+    // cowIMG = loadImage("assets/cow-poster.png");
+    // chickenIMG = loadImage("assets/chicken_480.png");
+}
+
+// Define a class for movable objects
+class MovableObject {
+    constructor(type, x, y, size, description) {
+        this.type = type;
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.description = description;
+        this.isDragged = false;
+        this.dragOffsetX = 0; // Offset for dragging
+        this.dragOffsetY = 0; // Offset for dragging
+    }
+
+    display() {
+        if (this.type === 'circle') {
+            fill(230, 230, 255);
+            circle(this.x + offsetX, this.y + offsetY, this.size);
+        } else if (this.type === 'square') {
+            fill(255, 100, 100);
+            rect(this.x + offsetX - this.size / 2, this.y + offsetY - this.size / 2, this.size, this.size);
+        }
+    }
+
+    checkIfPressed() {
+        let distance = dist(mouseX - offsetX, mouseY - offsetY, this.x, this.y);
+        if (this.type === 'circle' && distance < this.size / 2) {
+            this.isDragged = true;
+            // Calculate the offset
+            this.dragOffsetX = (mouseX - offsetX) - this.x;
+            this.dragOffsetY = (mouseY - offsetY) - this.y;
+        } else if (this.type === 'square' &&
+            mouseX - offsetX > this.x - this.size / 2 &&
+            mouseX - offsetX < this.x + this.size / 2 &&
+            mouseY - offsetY > this.y - this.size / 2 &&
+            mouseY - offsetY < this.y + this.size / 2) {
+            this.isDragged = true;
+            // Calculate the offset
+            this.dragOffsetX = (mouseX - offsetX) - this.x;
+            this.dragOffsetY = (mouseY - offsetY) - this.y;
+        }
+    }
+
+    update() {
+        if (this.isDragged) {
+            // Update position based on mouse position and the calculated offsets
+            this.x = mouseX - offsetX - this.dragOffsetX; 
+            this.y = mouseY - offsetY - this.dragOffsetY;
+        }
+    }
+}
+
 let objects = [
-    { type: 'circle', x: 200, y: 200, size: 100, description: 'This is a blue circle.' },
-    { type: 'square', x: 400, y: 200, size: 100, description: 'This is a red square.' },
-    { type: 'circle', x: 600, y: 200, size: 100, description: 'This is another blue circle.' },
-    { type: 'square', x: 800, y: 200, size: 100, description: 'This is another red square.' }
+    new MovableObject('circle', 200, 200, 100, 'This is a blue circle.'),
+    new MovableObject('square', 400, 200, 100, 'This is a red square.'),
+    new MovableObject('circle', 600, 200, 100, 'This is another blue circle.'),
+    new MovableObject('square', 800, 200, 100, 'This is another red square.')
 ];
 
 let selectedObject = null;
@@ -23,15 +85,10 @@ function setup() {
 function draw() {
     background(255);
 
-    // Draw objects
+    // Update and draw objects
     objects.forEach(obj => {
-        if (obj.type === 'circle') {
-            fill(230, 230, 255);
-            circle(obj.x + offsetX, obj.y + offsetY, obj.size);
-        } else if (obj.type === 'square') {
-            fill(255, 100, 100);
-            rect(obj.x + offsetX - obj.size / 2, obj.y + offsetY - obj.size / 2, obj.size, obj.size);
-        }
+        obj.update();
+        obj.display();
     });
 
     // Draw description box if an object is selected
@@ -79,15 +136,9 @@ function stopMoving() {
 function handleMousePressed() {
     let found = null;
     objects.forEach(obj => {
-        let distance = dist(mouseX - offsetX, mouseY - offsetY, obj.x, obj.y);
-        if (obj.type === 'circle' && distance < obj.size / 2) {
-            found = obj;
-        } else if (obj.type === 'square' &&
-                   mouseX - offsetX > obj.x - obj.size / 2 &&
-                   mouseX - offsetX < obj.x + obj.size / 2 &&
-                   mouseY - offsetY > obj.y - obj.size / 2 &&
-                   mouseY - offsetY < obj.y + obj.size / 2) {
-            found = obj;
+        obj.checkIfPressed(); // Check if the object is pressed
+        if (obj.isDragged) {
+            found = obj; // Keep reference to the dragged object
         }
     });
     selectedObject = found;
@@ -109,3 +160,10 @@ document.getElementById('leftButton').addEventListener('mouseleave', stopMoving)
 document.getElementById('rightButton').addEventListener('mousedown', () => startMoving('right'));
 document.getElementById('rightButton').addEventListener('mouseup', stopMoving);
 document.getElementById('rightButton').addEventListener('mouseleave', stopMoving);
+
+// Mouse released event
+function mouseReleased() {
+    objects.forEach(obj => {
+        obj.isDragged = false; // Stop dragging the object
+    });
+}
