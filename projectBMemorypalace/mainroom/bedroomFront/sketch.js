@@ -77,9 +77,9 @@ function setup() {
 
 
     // Initialize objects
-    objects.push(new MovableObject(deskIMG, 522, 684, 400, 'This is flower painting.'));
-    objects.push(new MovableObject(shelfIMG, 371, 236, 500, 'This is my closet.'));
-    objects.push(new MovableObject(shelf2IMG, 855, 203, 400, 'This is my matt'));
+    objects.push(new MovableObject(deskIMG, 522, 684, 400, 'This is my desk.'));
+    objects.push(new MovableObject(shelfIMG, 371, 236, 500, 'This is my shelf.'));
+    objects.push(new MovableObject(shelf2IMG, 855, 203, 400, 'This is my other book shelf'));
 
 
     // Add event listeners for keyboard arrow keys

@@ -78,8 +78,8 @@ function setup() {
 
 
     // Initialize objects
-    objects.push(new MovableObject(window1IMG, 582, 407, 1200, 800, 'This is flower painting.'));
-    objects.push(new MovableObject(flower1IMG, 431, 680, 200, 150, 'This is my closet.'));
+    objects.push(new MovableObject(window1IMG, 582, 407, 1200, 800, 'This is my window.'));
+    objects.push(new MovableObject(flower1IMG, 431, 680, 200, 150, 'This is my flower pot.'));
 
 
     // Add event listeners for keyboard arrow keys

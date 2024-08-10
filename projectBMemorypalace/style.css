@@ -40,3 +40,11 @@ body, html {
 .links a:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+p {
+    font-size: 16px;
+    color: #333;  /* Ensure the text color is not the same as the background */
+    margin-top: 20px;
+    text-align: center;
+}
+
